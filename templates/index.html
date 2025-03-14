@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="icon" href="../static/assets/img/triforce.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../static/assets/img/triforce.png" type="image/x-icon">
+    <title>Projeto Triforce</title>
+</head>
+<body>
+    <header>
+        <img src="../static/assets/img/triforce.png" alt="logo" />
+        <h1>Projeto Triforce</h1>
+    </header>
+    <main>
+        <div class="container">
+            <div class="form">
+                <form action="/" method="post">
+                    <label for="name">O que deseja procurar?</label>
+                    <input type="text" name="resultado" id="name" required />
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+            <div class="resultado" id="capturaArea">
+                <figure>
+                {% if not url_imagem and not erro404 and not erro %}
+                    <img src="../static/assets/img/lorem.png" alt="placeholder" />
+                {% elif not url_imagem and erro404 %}
+                    <img src="../static/assets/img/404.png" alt="404" />
+                    <p>{{ erro404 }}</p>
+                {% else %}
+                    <img src="{{url_imagem}}" />
+                    <p>{{ nome }}</p>
+                {% endif %}
+
+                {% if erro %}
+                    <p>{{ erro }}</p>
+                {% endif %}
+                </figure>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>HYAAHH!!</p>
+    </footer>
+</body>
+</html>
